@@ -1,5 +1,17 @@
 scriptencoding utf-8
 
+" Options
+set noswapfile
+set ruler
+set cmdheight=2
+set laststatus=2
+set title
+set wildmenu
+set showcmd
+" 検索結果をハイライト表示
+set hlsearch
+set number
+
 " Start NeoBundle Setting
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -14,7 +26,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " add plugins
 
 " NERDTree
-NeoBundle 'scrooloose/nerdtree' 
+NeoBundle 'scrooloose/nerdtree'
 
 " AutoClose
 NeoBundle 'Townk/vim-autoclose'
@@ -31,8 +43,38 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 
+" 行末の半角スペースを可視化
+NeoBundle 'bronson/vim-trailing-whitespace'
+
+" http://inari.hatenablog.com/entry/2014/05/05/231307
+" """"""""""""""""""""""""""""""
+" " 全角スペースの表示
+" """"""""""""""""""""""""""""""
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+      autocmd ColorScheme * call ZenkakuSpace()
+      autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+    augroup END
+    call ZenkakuSpace()
+endif
+"""""""""""""""""""""""""""""""
+
+" Git
+NeoBundle 'tpope/vim-fugitive'
+
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
+
+" ステータス行に現在のgitブランチを表示する
+set statusline+=%{fugitive#statusline()}
+
 call neobundle#end()
- 
+
 " Required:
 filetype plugin indent on
 
@@ -52,6 +94,6 @@ elseif &term =~ "xterm-color"
   set t_Sf=[3%dm
   set t_Sb=[4%dm
 endif
-	    
+
 syntax enable
 hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
