@@ -11,6 +11,10 @@ set showcmd
 " 検索結果をハイライト表示
 set hlsearch
 set number
+" インデント設定
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 " Start NeoBundle Setting
 if has('vim_starting')
