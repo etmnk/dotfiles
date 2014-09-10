@@ -33,5 +33,5 @@ fi
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Added Scala 2.11.2
-export SCALA_HOME=/usr/local/share/scala-2.11.2
+SCALA_HOME=/usr/local/share/scala-2.11.2
 export PATH=$SCALA_HOME/bin:$PATH
