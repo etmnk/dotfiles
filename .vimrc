@@ -12,9 +12,15 @@ set showcmd
 set hlsearch
 set number
 " インデント設定
-set tabstop=2
-set shiftwidth=2
-set expandtab
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
+set softtabstop=0
+set tags+=tags
+
+set nobackup
+set noswapfile
+set noundofile
 
 " Start NeoBundle Setting
 if has('vim_starting')
@@ -43,6 +49,8 @@ NeoBundle 'croaker/mustang-vim'
 NeoBundle 'nanotech/jellybeans.vim'
 " molokai
 NeoBundle 'tomasr/molokai'
+" hybrid
+NeoBundle 'w0ng/vim-hybrid'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -88,7 +96,8 @@ NeoBundleCheck
 
 " Color Scheme Setting
 
-colorscheme evening
+colorscheme molokai
+
 if &term =~ "xterm-256color" || "screen-256color"
   set t_Co=256
   set t_Sf=[3%dm
