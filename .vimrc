@@ -15,6 +15,8 @@ set number
 set tabstop=2
 set shiftwidth=2
 set expandtab
+" set tag
+set tags=~/.tags
 
 " Start NeoBundle Setting
 if has('vim_starting')
@@ -82,13 +84,32 @@ call neobundle#end()
 " Required:
 filetype plugin indent on
 
+" for Rails
+NeoBundle 'tpope/vim-rails'
+
+" for Ruby -- auto add end
+NeoBundle 'tpope/vim-endwise'
+
+" for Ruby -- auto add comment on/off
+NeoBundle 'tomtom/tcomment_vim'
+
+" for Ruby indent guide
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" auto vim-indent-guides on
+let g:indent_guides_enable_on_vim_startup = 1
+
+" add color for log
+NeoBundle 'vim-scripts/AnsiEsc.vim'
+
 NeoBundleCheck
 
 " End Neobundle Setting
 
 " Color Scheme Setting
 
-colorscheme evening
+"colorscheme evening
+colorscheme desert
 if &term =~ "xterm-256color" || "screen-256color"
   set t_Co=256
   set t_Sf=[3%dm
