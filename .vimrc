@@ -72,14 +72,6 @@ endif
 " Git
 NeoBundle 'tpope/vim-fugitive'
 
-" grep検索の実行後にQuickFix Listを表示する
-autocmd QuickFixCmdPost *grep* cwindow
-
-" ステータス行に現在のgitブランチを表示する
-set statusline+=%{fugitive#statusline()}
-
-call neobundle#end()
-
 " Required:
 filetype plugin indent on
 
@@ -104,6 +96,23 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 " add neosnippet
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+
+""""""
+" 順方向に補完候補を選択するには<c-n>とする。
+" 逆方向に補完候補を選択するには<c-p>とする。(※<c-○>はCtrl + ○という意味。) 
+" 補完候補から入力を決定するにはTabを押す。<Tab>を押すごとにマーカーごとにジャンプができる。
+""""""
+
+" end call NeoBundle
+call neobundle#end()
+
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
+
+" ステータス行に現在のgitブランチを表示する
+if isdirectory(expand('~/.vim/bundle/vim-fugitive'))
+  set statusline+=%{fugitive#statusline()}
+endif
 
 " setting neosnippet
 " Plugin key-mappings.
